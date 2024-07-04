@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Lazy Peon Inn - All in one bite{% endblock %}
+{% block style %}{% endblock %}
+{% block content %}
+    {% if dish_list is defined and dish_list|length > 0 %}
+        {% set counter = namespace(value=0) %}
+        <div class="container">
+            <div class="row">
+            {% for dish in dish_list %}
+                {% if (( counter.value < 6 )) %}
+                    <div class="col">
+                        <div class="card mb-3" style="width: 30rem; background-color: #E1D9D1 !important; border: 2px solid #5c546c; border-style: dotted;">
+                            <img class="card-img-top" src="{{ url_for('static', filename=dish.avatar) }}" style="height: 5rem; width: 5rem;">
+                            <div class="card-body">
+                                <h5 class="card-title"><b>{{ dish.name }}</b></h5>
+                                <p class="card-text"><i class="fa-solid fa-fw fa-lg fa-coins" style="color: #5c546c; margin-right: 5px;"></i>Price: {{ dish.price }} gold</p>
+                                <p class="card-text"><i class="fa-solid fa-fw fa-lg fa-pepper-hot" style="color: #5c546c; margin-right: 5px;"></i>Ingredients: {{ dish.ingredients }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col d-none">
+                        <div class="card mb-3" style="width: 30rem; background-color: #E1D9D1 !important; border: 2px solid #5c546c; border-style: dotted;">
+                            <img class="card-img-top" src="{{ url_for('static', filename=dish.avatar) }}" style="height: 5rem; width: 5rem;">
+                            <div class="card-body">
+                                <h5 class="card-title"><b>{{ dish.name }}</b></h5>
+                                <p class="card-text"><i class="fa-solid fa-fw fa-lg fa-coins" style="color: #5c546c; margin-right: 5px;"></i>Price: {{ dish.price }} gold</p>
+                                <p class="card-text"><i class="fa-solid fa-fw fa-lg fa-pepper-hot" style="color: #5c546c; margin-right: 5px;"></i>Ingredients: {{ dish.ingredients }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {% set counter.value = counter.value + 1 %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="lead text-center">No chefs available!</p>
+    {% endif %}
+{% endblock %}
+{% block scripts %}{% endblock %}

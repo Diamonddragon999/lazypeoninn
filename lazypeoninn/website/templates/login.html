@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Lazy Peon Inn - Login{% endblock %}
+{% block style %}{% endblock %}
+{% block content %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                {% if category == "success" %}
+                    <div class="alert alert-success w-50" role="alert">
+                        {{ message }}
+                    </div>
+                {% elif category == "info" %}
+                    <div class="alert alert-info w-50" role="alert">
+                        {{ message }}
+                    </div>
+                {% elif category == "error" %}
+                    <div class="alert alert-danger w-50" role="alert">
+                        {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <div class="mb-3 w-50">
+            <label for="email" class="form-label"><i class="fa-solid fa-envelope fa-lg" style="color: #5c546c; margin-right: 5px;"></i>Email address</label>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3 w-50">
+            <label for="password" class="form-label"><i class="fa-solid fa-key fa-lg" style="color: #5c546c; margin-right: 5px;"></i>Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <button type="submit" class="btn btn-outline-success"><i class="fa-solid fa-fw fa-check-double fa-sm" style="margin-right: 5px;"></i>Login</button>
+    </form>
+
+    <br>
+
+    <div>
+        <p >No account? Click <a href="/register" style="color: #5c546c; font-weight: bold;">here</a> to register.</p>
+    </div>
+{% endblock %}
+{% block scripts %}{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Lazy Peon Inn - Pictures, recipes and maybe more{% endblock %}
+{% block style %}{% endblock %}
+{% block content %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                {% if category == "success" %}
+                    <div class="alert alert-success w-50" role="alert">
+                        {{ message }}
+                    </div>
+                {% elif category == "info" %}
+                    <div class="alert alert-info w-50" role="alert">
+                        {{ message }}
+                    </div>
+                {% elif category == "error" %}
+                    <div class="alert alert-danger w-50" role="alert">
+                        {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% if media_list is defined and media_list|length > 0 %}
+        {% for file in media_list %}
+        <div class="card mb-3 w-50">
+            <div class="card-body text-dark">
+                <div class="container">
+                    <div class="row">
+                    <div class="col-sm">
+                            <p class="card-text"><i class="fa-solid fa-file-arrow-down fa-lg" style="color: #5c546c; margin-right: 5px;"></i>{{ file.name }}</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="card-text" style="text-align: right !important;"><a href="/media/get?file={{ file.path }}" style="color: #5c546c; font-weight: bold;">Download</a></p> 
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="lead text-center">Stash's empty!</p>
+    {% endif %}
+
+{% endblock %}
+{% block scripts %}{% endblock %}

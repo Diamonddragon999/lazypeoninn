@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Lazy Peon Inn - Read review{% endblock %}
+{% block style %}{% endblock %}
+{% block content %}
+
+    {% autoescape false%}
+
+        {% if review is not none %}
+            <div class="card w-50" style="background-color: #E1D9D1 !important; border: 2px solid #5c546c; border-style: dotted;">
+                <img class="card-img-top mx-3" src="{{ url_for('static', filename='images/chicken.png') }}" style="width: 40px; height: 40px;">            <div class="card-body">
+                    <h5 class="card-title"><b>{{ review.review_title }}</b></h5>
+                    <p class="card-text"><i class="fa-solid fa-fw fa-sm fa-user" style="color: #5c546c; margin-right: 5px;"></i>Author: <b>{{ review.review_author }}</b></p>
+                    <p class="card-text"><i class="fa-solid fa-fw fa-sm fa-file-lines" style="color: #5c546c; margin-right: 5px;"></i>{{ review.review_text }}</p>
+                    <a href="/review/list" class="btn btn-outline-success"><i class="fa-solid fa-fw fa-circle-arrow-left fa-sm" style="margin-right: 5px;"></i>Back</a>
+                </div>
+            </div>
+        {% else %}
+            <p class="lead text-center">Error fetching review data!</p>
+        {% endif %}
+
+    {% endautoescape %}
+
+{% endblock %}
+{% block scripts %}{% endblock %}

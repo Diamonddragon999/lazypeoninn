@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Lazy Peon Inn - Chef insights{% endblock %}
+{% block style %}{% endblock %}
+{% block content %}
+    <div class="card w-50" style="background-color: #E1D9D1 !important; border: 2px solid #5c546c; border-style: dotted;">
+        <img class="card-img-top" src="{{ url_for('static', filename=chef_info.avatar) }}" style="width: 35%; height: 35%;">
+        <div class="card-body">
+            <h5 class="card-title"><b>{{ chef_info.name }}</b></h5>
+            <p class="card-text"><i><i class="fa-solid fa-fw fa-lg fa-address-book" style="color: #5c546c; margin-right: 5px;"></i>{{ chef_info.description }}</i></p>
+            <a href="/chef/list" class="btn btn-outline-success"><i class="fa-solid fa-fw fa-circle-arrow-left fa-sm" style="margin-right: 5px;"></i>Back</a>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}{% endblock %}

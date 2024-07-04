@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Lazy Peon Inn - Tummy's pleasure{% endblock %}
+{% block style %}{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm text-center">
+                <h3><i class="fa-solid fa-fw fa-heart" style="color: #8bb826;"></i> Welcome to "Lazy Peon Inn"! <i class="fa-solid fa-heart" style="color: #8bb826;"></i></h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm text-center">
+                <img src="{{ url_for('static', filename='images/cauldron.gif') }}" style="max-width: 80%; max-height: 80%;"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm text-center">
+                <h3><i class="fa-solid fa-fw fa-utensils" style="color: #808080;"></i>Make sure to take a large bite... <i class="fa-solid fa-utensils" style="color: #808080;"></i></i></h3>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}{% endblock %}

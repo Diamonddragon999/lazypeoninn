@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Lazy Peon Inn - Always welcome, never asked{% endblock %}
+{% block style %}{% endblock %}
+{% block content %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                {% if category == "success" %}
+                    <div class="alert alert-success w-50" role="alert">
+                        {{ message }}
+                    </div>
+                {% elif category == "info" %}
+                    <div class="alert alert-info w-50" role="alert">
+                        {{ message }}
+                    </div>
+                {% elif category == "error" %}
+                    <div class="alert alert-danger w-50" role="alert">
+                        {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% autoescape false %}
+        {% if review_list is defined and review_list|length > 0 %}
+            {% for review in review_list %}
+                <div class="card" style="width: 30rem; background-color: #E1D9D1 !important; border: 2px solid #5c546c; border-style: dotted;">
+                    <img class="card-img-top mx-3" src="{{ url_for('static', filename='images/chicken.png') }}" style="width: 40px; height: 40px;">
+                    <div class="card-body">
+                        <h5 class="card-title"><b>{{ review.review_title }}</b></h5>
+                        <p class="card-text"><i><i class="fa-solid fa-fw fa-lg fa-comment" style="color: #5c546c; margin-right: 5px;"></i>{{ review.review_text }}</i></p>
+                        <a href="/review/read?code={{ review.review_code }}" class="btn btn-outline-success"><i class="fa-solid fa-fw fa-circle-question fa-sm" style="margin-right: 5px;"></i>Read more</a>
+                    </div>
+                </div>
+                <br>
+            {% endfor %}
+        {% else %}
+            <p class="lead text-center">No reviews available!</p>
+        {% endif %}
+    {% endautoescape %}
+
+{% endblock %}
+{% block scripts %}{% endblock %}

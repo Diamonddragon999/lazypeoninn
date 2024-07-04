@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Lazy Peon Inn - Your page{% endblock %}
+{% block style %}{% endblock %}
+{% block content %}
+    <div class="card w-50" style="background-color: #E1D9D1 !important; border: 2px solid #5c546c; border-style: dotted;">
+        <img class="card-img-top" src="{{ url_for('static', filename='images/user.webp') }}" style="width: 30%; height: 30%;">
+        <div class="card-body">
+            <h5 class="card-title">Welcome, <b>{{ user.name }}</b>! Enjoy the marvelous orcuisine!</h5>
+            <p class="card-text"><i class="fa-solid fa-fw fa-sm fa-envelope" style="color: #5c546c; margin-right: 5px;"></i>Your e-mail is: <b>{{ user.email }}</b></p>
+            <p class="card-text"><i class="fa-solid fa-fw fa-sm fa-cube" style="color: #5c546c; margin-right: 5px;"></i>Your user code is: <i>{{ user.user_code }}</i></p>
+            <a href="/logout" class="btn btn-outline-success"><i class="fa-solid fa-fw fa-circle-arrow-left fa-sm" style="margin-right: 5px;"></i>Logout</a>
+        </div>
+    </div>
+    <br>
+    <form action="/review/write" method="POST">
+        <div class="form-group w-50">
+          <label for="review_title"><i class="fa-solid fa-fw fa-sm fa-envelopes-bulk" style="color: #5c546c; margin-right: 5px;"></i>Review title</label>
+          <input type="text" class="form-control" id="review_title" name="review_title" required>
+          <label for="review_text"><i class="fa-solid fa-fw fa-sm fa-comments" style="color: #5c546c; margin-right: 5px;"></i>Review text</label>
+          <input type="text" class="form-control" id="review_text" name="review_text" required>
+          <small id="emailHelp" class="form-text text-muted">Post review</small>
+        </div>
+        <button class="btn btn-outline-primary"><i class="fa-solid fa-fw fa-down-long fa-sm"></i>Submit</button>
+    </form>
+{% endblock %}
+{% block scripts %}{% endblock %}

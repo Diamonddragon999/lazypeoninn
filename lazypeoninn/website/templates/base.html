@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name = "viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.ico') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/base.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        {% block style %}{% endblock %}
+        <title>{% block title %}Title{% endblock %}</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-dark navbar-expand-lg" style="font-weight: bold; background-color: #5c546c;">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><img id="logo-image" src="{{ url_for('static', filename='images/logo.png') }}" />Lazy Peon Inn</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-bottom: 5px;">
+                    <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+                        <li>
+                            <a class="nav-link active" href="/menu/"><i class="fa-solid fa-xl fa-book-skull" style="color: #8bb826; margin-right: 5px;"></i>Menu</a>
+                        </li>
+                        <li>
+                            <a class="nav-link active" href="/chef/list"><i class="fa-solid fa-xl fa-head-side-mask" style="color: #8bb826; margin-right: 5px;"></i>Chefs</a>
+                        </li>
+                        <li>
+                            <a class="nav-link active" href="/review/list"><i class="fa-solid fa-xl fa-newspaper" style="color: #8bb826; margin-right: 5px;"></i>Reviews</a>
+                        </li>
+                        <li>
+                            <a class="nav-link active" href="/media/list"><i class="fa-solid fa-xl fa-panorama" style="color: #8bb826; margin-right: 5px;"></i>Media</a>
+                        </li>
+                        <li>
+                            {% if user.is_authenticated == True %}
+                                <a class="nav-link active" href="/userpage"><i class="fa-solid fa-user-astronaut fa-xl" style="color: #8bb826; margin-right: 5px;"></i>My Page</a>
+                            {% else %}
+                                <a class="nav-link active" href="/login"><i class="fa-solid fa-right-to-bracket fa-xl" style="color: #8bb826; margin-right: 5px;"></i>Login</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div style="margin: 3rem;">{% block content %}{% endblock %}</div>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/f36776194b.js" crossorigin="anonymous"></script>
+    </body>
+</html>
